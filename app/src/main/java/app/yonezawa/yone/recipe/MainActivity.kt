@@ -14,6 +14,10 @@ class MainActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val dataStore: SharedPreferences = getSharedPreferences("DataStore",Context.MODE_PRIVATE)
+
+        val stringText = menueditText.text.toString()
+
 
         val recipe: Recipe? = read()
         //データーベースから取得したRecipeをeditTextに表示する
@@ -37,7 +41,7 @@ class MainActivity: AppCompatActivity() {
         super.onDestroy()
         realm.close()
     }
-    //画面が起動したときにすでに保存されているRecipeデータを取得するコードを書く
+    //画面が起動したときにすでに保存されているRecipeデータを取得する
     fun read (): Recipe? {
         return realm.where(Recipe::class.java).findFirst()
     }
