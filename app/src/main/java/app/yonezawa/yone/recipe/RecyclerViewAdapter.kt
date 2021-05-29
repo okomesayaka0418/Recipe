@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class RecyclerViewAdapter (private val context: Context):
         RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+    //RecyclerViewに表示するリストを宣言
     val items: MutableList<RecipeData> = mutableListOf()
 
 
@@ -25,12 +26,13 @@ class RecyclerViewAdapter (private val context: Context):
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    //position番号の要素をViewHolderに表示
         val item = items[position]
         holder.recipeImage.setImageResource(item.recipeImageResource)
         holder.menuTextView.text = item.menu
 
-    }
-    fun addAll(item: List<RecipeData>) {
+    }//adapterのデータ登録
+    fun addAll(items: List<RecipeData>) {
         this.items.addAll(items)
         notifyDataSetChanged()
 

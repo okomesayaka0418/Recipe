@@ -28,6 +28,8 @@ class SearchActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
+        adapter.addAll(recipeData)
+
         //intentButtonを押したら、MainActivityへ移動
         floatingActionButton.setOnClickListener {
             val toMainActivityIntent = Intent(this, MainActivity::class.java)
