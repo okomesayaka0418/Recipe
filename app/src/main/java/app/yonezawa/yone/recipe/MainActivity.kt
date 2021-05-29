@@ -29,10 +29,17 @@ class MainActivity: AppCompatActivity() {
         }
         //それぞれのテキストを取得して、save()というメソッドに引数として渡している
         saveButton.setOnClickListener {
-            val menu: String = menueditText.toString()
-            val making: String = makingeditText.toString()
-            val comment: String = commenteditText.toString()
+            val menu: String = menueditText.text.toString()
+            val making: String = makingeditText.text.toString()
+            val comment: String = commenteditText.text.toString()
             save(menu,making,comment)
+
+
+
+           /* //入力文字列を”Input”に書き込む
+            val editor = dataStore.edit()
+            editor.putString("Input",stringText)
+            editor.apply()*/
         }
 
     }

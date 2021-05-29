@@ -22,6 +22,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
+    <TextView
+        android:id="@+id/menusaveText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="11dp"
+        android:ems="20"
+        android:text="TextView"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/menueditText"
+        app:layout_constraintStart_toStartOf="@+id/menueditText" />
+
     <EditText
         android:id="@+id/makingeditText"
         android:layout_width="wrap_content"
@@ -35,6 +46,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/menueditText" />
 
+    <TextView
+        android:id="@+id/makingsaveText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="3dp"
+        android:ems="20"
+        android:text="TextView"
+        android:visibility="invisible"
+        app:layout_constraintBaseline_toBaselineOf="@+id/makingeditText"
+        app:layout_constraintEnd_toEndOf="@+id/makingeditText"
+        app:layout_constraintStart_toStartOf="@+id/makingeditText" />
+
     <EditText
         android:id="@+id/commenteditText"
         android:layout_width="wrap_content"
@@ -46,6 +69,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/makingeditText" />
+
+    <TextView
+        android:id="@+id/commentsaveText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginBottom="9dp"
+        android:ems="20"
+        android:text="TextView"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/commenteditText"
+        app:layout_constraintStart_toStartOf="@+id/commenteditText" />
 
     <Button
         android:id="@+id/saveButton"

@@ -4,12 +4,23 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import io.realm.OrderedRealmCollection
+import io.realm.OrderedRealmCollectionChangeListener
+import kotlinx.android.synthetic.main.activity_main.view.*
 
-class RecyclerViewAdapter (private val context: Context):
-        RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+class RecyclerViewAdapter(private val context: Context,
+    /* private var recipe: OrderedRealmCollection<Recipe>?,
+     private var listener: AdapterView.OnItemClickListener,
+     private val autoUpdate: Boolean*/
+):
+
+
+   RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
     //RecyclerViewに表示するリストを宣言
     val items: MutableList<RecipeData> = mutableListOf()
 
@@ -18,10 +29,10 @@ class RecyclerViewAdapter (private val context: Context):
         val view =
                 LayoutInflater.from(context).inflate(R.layout.item_recipe_data_cell, parent, false)
         return ViewHolder(view)
-
     }
     override fun getItemCount(): Int {
         return items.size
+
 
     }
 
@@ -30,6 +41,8 @@ class RecyclerViewAdapter (private val context: Context):
         val item = items[position]
         holder.recipeImage.setImageResource(item.recipeImageResource)
         holder.menuTextView.text = item.menu
+
+
 
     }//adapterのデータ登録
     fun addAll(items: List<RecipeData>) {
