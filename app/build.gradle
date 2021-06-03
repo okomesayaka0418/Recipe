@@ -9,6 +9,11 @@ plugins {
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
+    /*compileSdkVersion(
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompactibility JavaVersion.VERSION_1_8
+
+    )*/
 
     defaultConfig {
         applicationId "app.yonezawa.yone.recipe"
@@ -27,8 +32,7 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+
     }
     kotlinOptions {
         jvmTarget = '1.8'
@@ -47,6 +51,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'io.realm:android-adapters:3.1.0'
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+    implementation 'io.realm:android-adapters:2.1.1'
 
 
 

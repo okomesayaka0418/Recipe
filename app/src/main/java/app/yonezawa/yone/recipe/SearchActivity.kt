@@ -24,9 +24,18 @@ class SearchActivity : AppCompatActivity() {
 
         val recipeList = readAll()
 
+       /* if (recipeList.isEmpty()){
+            for (i in 0..10){
+                create(26,"岡田准一${i}にあった！")
+            }
+        }*/
+
         val adapter = RecyclerViewAdapter(this, recipeList, true)
+       // recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
+
+       //adapter.addAll(Recipe)
 
 
 

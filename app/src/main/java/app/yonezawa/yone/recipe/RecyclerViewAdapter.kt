@@ -34,8 +34,8 @@ import kotlinx.android.synthetic.main.item_recipe_data_cell.view.*
      }
 
      class RecipeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-         val recipeImageView: ImageView = view.recipeImageView
-         val menuTextView: TextView = view.menuTextView
+         val recipeImageView: ImageView = view.findViewById(R.id.recipeImageView)
+         val menuTextView: TextView = view.findViewById(R.id.menuTextView)
 
      }
  }

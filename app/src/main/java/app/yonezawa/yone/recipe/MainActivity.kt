@@ -7,6 +7,7 @@ import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 class MainActivity: AppCompatActivity() {
 
@@ -21,12 +22,12 @@ class MainActivity: AppCompatActivity() {
 
         val recipe: Recipe? = read()
         //データーベースから取得したRecipeをeditTextに表示する
-        if (recipe != null) {
+      /*  if (recipe != null) {
             menueditText.setText(recipe.menu)
             makingeditText.setText(recipe.making)
             commenteditText.setText(recipe.comment)
 
-        }
+        }*/
         //それぞれのテキストを取得して、save()というメソッドに引数として渡している
         saveButton.setOnClickListener {
             val menu: String = menueditText.text.toString()
@@ -54,16 +55,16 @@ class MainActivity: AppCompatActivity() {
     }
     //saveメッソド内でそれぞれのコメントを受け取り保存する
     fun save(menu: String, making: String,comment: String) {
-        val recipe: Recipe? = read()
+      //  val recipe: Recipe? = read()
         realm.executeTransaction{
-            if (recipe != null) {
+           /* if (recipe != null) {
                 //レシピの更新
                 recipe.menu = menu
                 recipe.making = making
                 recipe.comment = comment
-            } else {
+            } else {*/
                 //レシピの新規作成
-               val newRecipe: Recipe = it.createObject(Recipe::class.java)
+               val newRecipe: Recipe = it.createObject(Recipe::class.java,UUID.randomUUID().toString())
                 newRecipe.menu = menu
                 newRecipe.making = making
                 newRecipe.comment = comment
@@ -72,4 +73,4 @@ class MainActivity: AppCompatActivity() {
         }
 
     }
-}
+
