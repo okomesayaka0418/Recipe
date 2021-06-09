@@ -4,7 +4,9 @@ import android.content.Intent
 import android.icu.text.AlphabeticIndex
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Adapter
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.realm.Realm
@@ -24,14 +26,26 @@ class SearchActivity : AppCompatActivity() {
 
         val recipeList = readAll()
 
-       /* if (recipeList.isEmpty()){
-            for (i in 0..10){
-                create(26,"岡田准一${i}にあった！")
-            }
-        }*/
+
+        val intent: Intent = Intent(this,DisplayActivity::class.java)
+
+
 
         val adapter = RecyclerViewAdapter(this, recipeList, true)
-       // recyclerView.setHasFixedSize(true)
+        adapter.setOnItemClickListener(
+            object :RecyclerViewAdapter.OnItemClickListener {
+                override fun onItemClick(view: View, position: Int, recipe: Recipe) {
+                    //レシピデータ渡す処理
+                    intent.putExtra("data", recipe.id)
+                    startActivity(intent)
+
+
+                }
+
+
+            }
+        )
+
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
@@ -64,6 +78,7 @@ class SearchActivity : AppCompatActivity() {
             recipe.menu = menu
         }
     }
+
 
 
 

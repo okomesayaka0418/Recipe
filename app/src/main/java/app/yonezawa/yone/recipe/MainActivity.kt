@@ -1,12 +1,14 @@
 package app.yonezawa.yone.recipe
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_search.*
 import java.util.*
 
 class MainActivity: AppCompatActivity() {
@@ -43,6 +45,7 @@ class MainActivity: AppCompatActivity() {
             editor.apply()*/
         }
 
+
     }
     //画面が終了したときに表示される
     override fun onDestroy() {
@@ -71,6 +74,7 @@ class MainActivity: AppCompatActivity() {
             }
             Snackbar.make(container,"保存しました！！",Snackbar.LENGTH_SHORT).show()
         }
+
 
     }
 

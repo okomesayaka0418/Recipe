@@ -19,8 +19,8 @@ android {
         applicationId "app.yonezawa.yone.recipe"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 2
-        versionName "よねぴ"
+        versionCode 3
+        versionName "よねぴ―す"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -53,6 +53,7 @@ dependencies {
     implementation 'io.realm:android-adapters:3.1.0'
     implementation "androidx.recyclerview:recyclerview:1.1.0"
     implementation 'io.realm:android-adapters:2.1.1'
+    implementation 'androidx.fragment:fragment-ktx:1.3.0-alpha04'
 
 
 
