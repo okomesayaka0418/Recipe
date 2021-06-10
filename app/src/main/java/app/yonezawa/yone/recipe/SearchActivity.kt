@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Adapter
 import androidx.core.os.bundleOf
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.realm.Realm
@@ -17,10 +18,12 @@ import java.util.*
 
 class SearchActivity : AppCompatActivity() {
 
+
     val realm: Realm = Realm.getDefaultInstance()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
@@ -45,6 +48,10 @@ class SearchActivity : AppCompatActivity() {
 
             }
         )
+        //RecyclerViewに線をいれる
+        val itemDecoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
+        recyclerView.addItemDecoration(itemDecoration)
+
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
