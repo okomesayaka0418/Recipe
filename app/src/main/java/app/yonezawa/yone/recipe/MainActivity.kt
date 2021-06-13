@@ -30,13 +30,12 @@ class MainActivity: AppCompatActivity() {
             val making: String = makingeditText.text.toString()
             val comment: String = commenteditText.text.toString()
             save(menu,making,comment)
+            val toSearchActivityIntent = Intent(this, SearchActivity::class.java)
+            startActivity(toSearchActivityIntent)
 
         }
         //保存ボタン押したらSearchActivityに画面遷移
-        saveButton.setOnClickListener {
-            val toSearchActivityIntent = Intent(this, SearchActivity::class.java)
-            startActivity(toSearchActivityIntent)
-        }
+
 
 
 
