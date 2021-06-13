@@ -56,8 +56,6 @@ class SearchActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
-       //adapter.addAll(Recipe)
-
 
 
         //intentButtonを押したら、MainActivityへ移動

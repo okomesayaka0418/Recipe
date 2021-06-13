@@ -67,7 +67,7 @@ class MainActivity: AppCompatActivity() {
             newRecipe.making = making
             newRecipe.comment = comment
         }
-        Snackbar.make(container, "保存しました！！", Snackbar.LENGTH_SHORT).show()
+        //Snackbar.make(container, "保存しました！！", Snackbar.LENGTH_SHORT).show()
 
 
 
