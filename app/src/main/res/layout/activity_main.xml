@@ -5,6 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFCF2"
     tools:context=".MainActivity">
 
     <EditText
@@ -42,16 +43,17 @@
         android:ems="16"
         android:hint="コメント"
         android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@id/saveButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/makingeditText"
-        app:layout_constraintBottom_toTopOf="@id/saveButton"/>
+        app:layout_constraintTop_toBottomOf="@+id/makingeditText" />
 
     <Button
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
+        android:background="@drawable/background_circle"
         android:ems="20"
         android:text="保存"
         app:layout_constraintBottom_toBottomOf="parent"

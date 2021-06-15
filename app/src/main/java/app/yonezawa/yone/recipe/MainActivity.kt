@@ -24,7 +24,7 @@ class MainActivity: AppCompatActivity() {
 
         val recipe: Recipe? = read()
 
-        //それぞれのテキストを取得して、save()というメソッドに引数として渡している
+        //それぞれのテキストを取得して、save()というメソッドに引数として渡している,保存ボタン押したらSearchActivityに画面遷移
         saveButton.setOnClickListener {
             val menu: String = menueditText.text.toString()
             val making: String = makingeditText.text.toString()
