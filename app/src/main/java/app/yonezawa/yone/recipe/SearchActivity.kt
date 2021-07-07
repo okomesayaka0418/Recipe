@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Adapter
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.realm.Realm
@@ -22,7 +23,10 @@ class SearchActivity : AppCompatActivity() {
     val realm: Realm = Realm.getDefaultInstance()
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
@@ -34,7 +38,10 @@ class SearchActivity : AppCompatActivity() {
 
 
 
+
         val adapter = RecyclerViewAdapter(this, recipeList, true)
+
+
         adapter.setOnItemClickListener(
             object :RecyclerViewAdapter.OnItemClickListener {
                 override fun onItemClick(view: View, position: Int, recipe: Recipe) {
@@ -42,12 +49,13 @@ class SearchActivity : AppCompatActivity() {
                     intent.putExtra("data", recipe.id)
                     startActivity(intent)
 
-
                 }
 
 
             }
         )
+
+
         //RecyclerViewに線をいれる
         val itemDecoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         recyclerView.addItemDecoration(itemDecoration)
@@ -55,6 +63,27 @@ class SearchActivity : AppCompatActivity() {
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
+
+        //スワイプして削除
+        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.ACTION_STATE_IDLE,ItemTouchHelper.LEFT){
+            override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
+                    return false
+                }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                viewHolder?.let {
+                    val id = adapter.getItem(viewHolder.adapterPosition)?.id ?: return@let
+                    val target = realm.where(Recipe::class.java).equalTo("id",id).findFirst()
+                    realm.executeTransaction{
+                        target?.deleteFromRealm()
+                    }
+                }
+            }
+         })
+        itemTouchHelper.attachToRecyclerView(recyclerView)
+
+
+
 
 
 
@@ -65,7 +94,12 @@ class SearchActivity : AppCompatActivity() {
 
         }
 
+
+
+
     }
+
+
 
     override fun onDestroy() {
         super.onDestroy()
@@ -83,6 +117,9 @@ class SearchActivity : AppCompatActivity() {
             recipe.menu = menu
         }
     }
+
+
+
 
 
 
