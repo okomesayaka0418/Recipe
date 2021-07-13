@@ -19,8 +19,8 @@ android {
         applicationId "app.yonezawa.yone.recipe"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 5
-        versionName "よねちゃん"
+        versionCode 6
+        versionName "よねち"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

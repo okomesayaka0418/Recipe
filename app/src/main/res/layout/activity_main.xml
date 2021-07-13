@@ -60,4 +60,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/commenteditText" />
+
+    <Button
+        android:id="@+id/btnLaunchCamera"
+        android:layout_width="309dp"
+        android:layout_height="42dp"
+        android:text="@string/launch_camera"
+        app:layout_constraintBottom_toTopOf="@id/saveButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/commenteditText"
+        app:layout_constraintVertical_bias="0.514" />
+
+    <ImageView
+        android:id="@+id/cameraImage"
+        android:layout_width="262dp"
+        android:layout_height="149dp"
+        app:layout_constraintBottom_toTopOf="@+id/menueditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

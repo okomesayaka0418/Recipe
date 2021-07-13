@@ -15,7 +15,8 @@ import io.realm.RealmRecyclerViewAdapter
 import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.item_recipe_data_cell.view.*
 
- open class RecyclerViewAdapter(
+ open class
+ RecyclerViewAdapter(
          private  val context: Context,
          private  var recipeList: OrderedRealmCollection<Recipe>?,
          private  val autoUpdate: Boolean):
