@@ -10,11 +10,14 @@ import android.provider.MediaStore
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_search.*
 import java.util.*
-import java.util.jar.Manifest
+import android.Manifest
+import android.content.pm.PackageManager
+
 
 class MainActivity: AppCompatActivity() {
 
@@ -69,6 +72,7 @@ class MainActivity: AppCompatActivity() {
 
     //撮影した画像取得
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == CAMERA_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             val image = data?.extras?.get("data")?.let {
                 //画像をimageViewに表示
@@ -84,8 +88,8 @@ class MainActivity: AppCompatActivity() {
         startActivityForResult(intent, CAMERA_REQUEST_CODE)
     }
     //カメラのパーミッションを持っているか（許可得た？的な確認）
-    private fun checkCameraPermission() =packageManager.PERMISSION_GRANTED ==
-            ContextCompact.checkSelfPermisson(applicationContext,Manifest.permission.CAMERA)
+    private fun checkCameraPermission() = PackageManager.PERMISSION_GRANTED ==
+            ContextCompat.checkSelfPermission(applicationContext,Manifest.permission.CAMERA)
 
     //パーミッションを得る（上でパーミッションがないと言われた⇒パーミッションを得る必要がある）
     private fun grantCameraPermission() =
@@ -96,7 +100,7 @@ class MainActivity: AppCompatActivity() {
     //カメラのパーミッションを得られたか
     override fun onRequestPermissionResult(requestCode: Int,permissions: Array<out String>, grantResults: IntArray) {
         if (requestCode == CAMERA_PERMISSION_REQUEST_CODE) {
-            if (!grantResults.isNotEmpty() && grantResults[0] == packageManager.PERMISSION_GRANTED) {
+            if (!grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 takePicture()
 
             }
