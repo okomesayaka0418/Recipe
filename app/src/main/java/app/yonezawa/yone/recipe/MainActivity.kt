@@ -1,3 +1,4 @@
+
 package app.yonezawa.yone.recipe
 
 import android.app.Activity
@@ -17,6 +18,9 @@ import kotlinx.android.synthetic.main.activity_search.*
 import java.util.*
 import android.Manifest
 import android.content.pm.PackageManager
+import android.widget.ImageView
+import kotlinx.android.synthetic.main.activity_main.view.*
+import kotlinx.android.synthetic.main.item_recipe_data_cell.view.*
 
 
 class MainActivity: AppCompatActivity() {
@@ -46,7 +50,8 @@ class MainActivity: AppCompatActivity() {
             val menu: String = menueditText.text.toString()
             val making: String = makingeditText.text.toString()
             val comment: String = commenteditText.text.toString()
-            save(menu,making,comment)
+            val image: ImageView = cameraImage.findViewById(R.id.cameraImage)
+            save(menu,making,comment,image)
             val toSearchActivityIntent = Intent(this, SearchActivity::class.java)
             startActivity(toSearchActivityIntent)
 
@@ -113,25 +118,7 @@ class MainActivity: AppCompatActivity() {
     }
 
 
-
-
-
-    /*override fun onRequestPermissionResult(requestCode: Int,
-                                           permissions: Array<out String>,
-                                           grantResults: IntArray
-    ) {
-
-        if (requestCode == CAMERA_PERMISSION_REQUEST_CODE) {
-            if (!grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                takePicture()
-
-            }
-
-        }
-    }*/
-
-
-
+    
     //画面が終了したときに表示される
     override fun onDestroy() {
         super.onDestroy()
@@ -142,7 +129,7 @@ class MainActivity: AppCompatActivity() {
         return realm.where(Recipe::class.java).findFirst()
     }
     //saveメッソド内でそれぞれのコメントを受け取り保存する
-    fun save(menu: String, making: String,comment: String) {
+    fun save(menu: String, making: String,comment: String, image:Int) {
         //  val recipe: Recipe? = read()
         realm.executeTransaction {
             /* if (recipe != null) {
@@ -157,6 +144,7 @@ class MainActivity: AppCompatActivity() {
             newRecipe.menu = menu
             newRecipe.making = making
             newRecipe.comment = comment
+            newRecipe.imageId = image
         }
         //Snackbar.make(container, "保存しました！！", Snackbar.LENGTH_SHORT).show()
 

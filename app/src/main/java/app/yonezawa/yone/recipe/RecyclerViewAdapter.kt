@@ -56,12 +56,14 @@ import kotlinx.android.synthetic.main.item_recipe_data_cell.view.*
 
          holder.menuTextView.text = recipe.menu
          holder.recipeImageView.setImageResource(recipe.imageId)
+
      }
 
      class RecipeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-         val recipeImageView: ImageView = view.findViewById(R.id.recipeImageView)
          val menuTextView: TextView = view.findViewById(R.id.menuTextView)
+         val recipeImageView: ImageView = view.findViewById(R.id.recipeImageView)
+
 
      }
 
