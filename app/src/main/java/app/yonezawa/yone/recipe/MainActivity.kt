@@ -33,6 +33,8 @@ class MainActivity: AppCompatActivity() {
     }
 
     val realm: Realm = Realm.getDefaultInstance()
+    var image:Bitmap? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,8 +52,8 @@ class MainActivity: AppCompatActivity() {
             val menu: String = menueditText.text.toString()
             val making: String = makingeditText.text.toString()
             val comment: String = commenteditText.text.toString()
-            val image: ImageView = cameraImage.findViewById(R.id.cameraImage)
-            save(menu,making,comment,image)
+
+            save(menu,making,comment,image!!)//imageのヌルチェック
             val toSearchActivityIntent = Intent(this, SearchActivity::class.java)
             startActivity(toSearchActivityIntent)
 
@@ -79,9 +81,10 @@ class MainActivity: AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == CAMERA_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            val image = data?.extras?.get("data")?.let {
+            val img = data?.extras?.get("data")?.let {
                 //画像をimageViewに表示
-                cameraImage.setImageBitmap(it as Bitmap)
+                image= it as Bitmap
+                cameraImage.setImageBitmap(image)
             }
         }
     }
@@ -129,7 +132,7 @@ class MainActivity: AppCompatActivity() {
         return realm.where(Recipe::class.java).findFirst()
     }
     //saveメッソド内でそれぞれのコメントを受け取り保存する
-    fun save(menu: String, making: String,comment: String, image:Int) {
+    fun save(menu: String, making: String,comment: String, image:Bitmap) {
         //  val recipe: Recipe? = read()
         realm.executeTransaction {
             /* if (recipe != null) {
@@ -144,7 +147,7 @@ class MainActivity: AppCompatActivity() {
             newRecipe.menu = menu
             newRecipe.making = making
             newRecipe.comment = comment
-            newRecipe.imageId = image
+            newRecipe.image = image
         }
         //Snackbar.make(container, "保存しました！！", Snackbar.LENGTH_SHORT).show()
 

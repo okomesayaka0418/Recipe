@@ -23,7 +23,8 @@ class DisplayActivity : AppCompatActivity() {
          displaymenu.text = save?.menu
          diplaymaking.text = save?.making
          displaycomment.text = save?.comment
-        displaycameraimage.= save?.imageId
+        displaycameraimage.setImageBitmap(save?.image)//Bitnmap型のImageをViewに表示させる
+
 
 
 
